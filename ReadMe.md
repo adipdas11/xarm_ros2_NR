@@ -575,3 +575,25 @@ __Reminder 4: The <hw_ns> described below is replaced with the actual one, the x
       ```
     - Use of Kinematics parameter file: Specify this parameter when starting the launch file
       - Note that before specifying this parameter, make sure that the corresponding configuration file exists. If it does not exist, you need to connect the robot arm through a script to generate it.
+
+## 6. Instruction on xArm5 pick and place task
+  - Follow all the above steps for creating the workspace and source in workspace
+  - To launch the pick and place task:
+    ### In Simulation:
+    - Launch the simulation with the argument add_gripper:=true
+      ```
+      ros2 launch xarm_moveit_config xarm5_moveit_fake.launch.py add_gripper:=true
+      ```
+    - Launch pick and place launch file
+      ```
+      ros2 launch xarm_planner xarm5_pick_and_place.launch.py
+      ```
+    ### In Real Robot:
+    - Launch the simulation with the argument robot_ip:=192.168.1.198 and add_gripper:=true
+      ```
+      ros2 launch xarm_moveit_config xarm5_moveit_realmove.launch.py robot_ip:192.168.1.198 add_gripper:=true
+      ```
+    - Launch pick and place launch file
+      ```
+      ros2 launch xarm_planner xarm5_pick_and_place.launch.py
+      ```

@@ -74,6 +74,15 @@ target_link_libraries(test_xarm_planner_api_joint
   ${ament_LIBRARIES}
 )
 
+add_executable(test_dual_xarm_planner_api_joint test/test_dual_xarm_planner_api_joint.cpp)
+ament_target_dependencies(test_dual_xarm_planner_api_joint
+  ${dependencies}
+)
+target_link_libraries(test_dual_xarm_planner_api_joint 
+  xarm_planner
+  ${ament_LIBRARIES}
+)
+
 add_executable(test_xarm_planner_api_pose test/test_xarm_planner_api_pose.cpp)
 ament_target_dependencies(test_xarm_planner_api_pose
   ${dependencies}
@@ -82,6 +91,17 @@ target_link_libraries(test_xarm_planner_api_pose
   xarm_planner
   ${ament_LIBRARIES}
 )
+
+# custom mine package
+add_executable(xarm5_pick_and_place test/xarm5_pick_and_place.cpp)
+ament_target_dependencies(xarm5_pick_and_place
+  ${dependencies}
+)
+target_link_libraries(xarm5_pick_and_place
+  xarm_planner
+  ${ament_LIBRARIES}
+)
+# end custom package
 
 add_executable(test_xarm_gripper_planner_api_joint test/test_xarm_gripper_planner_api_joint.cpp)
 ament_target_dependencies(test_xarm_gripper_planner_api_joint
@@ -107,6 +127,11 @@ ament_target_dependencies(test_xarm_gripper_planner_client_joint
   ${dependencies}
 )
 
+add_executable(test_lite_gripper_realmove test/test_lite_gripper_realmove.cpp)
+ament_target_dependencies(test_lite_gripper_realmove
+  ${dependencies}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -129,11 +154,14 @@ install(
   xarm_planner_node
   xarm_gripper_planner_node
   test_xarm_planner_api_joint
+  test_dual_xarm_planner_api_joint
   test_xarm_planner_api_pose
   test_xarm_gripper_planner_api_joint
+  xarm5_pick_and_place
   test_xarm_planner_client_joint
   test_xarm_planner_client_pose
   test_xarm_gripper_planner_client_joint
+  test_lite_gripper_realmove
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}

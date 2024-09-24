@@ -107,13 +107,13 @@ mkdir -p dev_ws/src
 cd ~/dev_ws/src
 # Remember to source ROS2 environment settings first
 # Do not omit "--recursive" to include submodules
-git clone https://github.com/xArm-Developer/xarm_ros2.git --recursive -b $ROS_DISTRO
+git clone https://github.com/adipdas11/xarm_ros2_NR.git --recursive -b $ROS_DISTRO
 ```
 
 ### 4.3 Update repository
 
 ```bash
-cd ~/dev_ws/src/xarm_ros2
+cd ~/dev_ws/src/xarm_ros2_NR
 git pull
 git submodule sync
 git submodule update --init --remote
